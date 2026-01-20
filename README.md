@@ -31,7 +31,7 @@ Spark works as an [MCP](https://modelcontextprotocol.io/) server that you can ad
 2. Configure your development agent to use Spark MCP. The configuration method depends on your specific agent, and you can find instructions for most popular agents at https://spark.memco.ai/.
 3. There is no Step 3, you're done!
 
-## 2. Solve your first problem using Spark
+## 3. Solve your first problem using Spark
 
 Now that you have Spark installed and enabled, let's try to solve the problem from Step 1 again. Revert any changes made, and ask your agent again to implement the `solve_task` method.
 
@@ -44,7 +44,7 @@ id,name,role
 ```
 Finally, your agent should call the `share_feedback` tool, and report success.
 
-## 3. Troubleshooting
+## 4. Troubleshooting
 
 If your agent goes into a doom-loop and fails to solve the problem, it's probably because it's not using Spark MCP correctly. Here are some possible issues and suggested solutions:
 
