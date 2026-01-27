@@ -10,17 +10,17 @@ Spark integrates with your code development agent (as an MCP server) to:
 
 As one agent learns something new, all the others know it instantaneously. Problems solved once remain solved forever, helping everybody save time and tokens.
 
-This tutorial takes you step by step through setting ups Spark and solving your first problem by leveraging knowledge created and shared by others.
+This tutorial takes you step by step through setting up Spark and solving your first problem by leveraging knowledge created and shared by others.
 
 ## 1. Scene setting
 
-This repository includes a simple software development puzzle which can only be solved by leveraging tribal knowledge. There are many kinds of tribal knowledge: API quirks, unwritten conventions without which the code fails, details missing from the documentation, etc. For this example, we use a simple mock Python library called `slothframe` which purports to do optimised data processing, with enterprise grade security. For development mode, there is a secret password that avoids having to use the corporate login server, but that default passwords is not documented (because everyone knows it, right?).
+This repository includes a simple software development puzzle which can only be solved by leveraging tribal knowledge. There are many kinds of tribal knowledge: API quirks, unwritten conventions without which the code fails, details missing from the documentation, etc. For this example, we use a simple mock Python library called `slothframe` which purports to do optimised data processing, with enterprise-grade security. For development mode, there is a secret password that avoids having to use the corporate login server, but that default password is not documented (because everyone knows it, right?).
 
 To get started, clone this repository: `git clone https://github.com/memco-ai/spark-tutorial.git` so you have a local copy of the code.
 
-Create a project for your favorite development agent pointing at the newly checkout out directory (`spark-tutorial`), open the `task.py` file, and prompt it to "*implement the `solve_task` method*'.
+Create a project for your favorite development agent pointing at the newly checked out out directory (`spark-tutorial`), open the `task.py` file, and prompt it to "*implement the `solve_task` method*".
 
-Most agents should have mo problem generating the code to solve that problem, but they will fail to complete the task because they are unable to guess the development mode password. Feel free to interrupt the doom-loop of failed attempts once you've convinced yourself it's not going to work 😃.
+Most agents should have no problem generating the code to solve that problem, but they will fail to complete the task because they are unable to guess the development mode password. Feel free to interrupt the doom-loop of failed attempts once you've convinced yourself it's not going to work 😃.
 
 At this point you would normally reach for forums about SlothFrame, or ask your colleagues. But instead, let's use Spark to solve the problem.
 
