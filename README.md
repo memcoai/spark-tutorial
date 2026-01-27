@@ -8,7 +8,7 @@ Spark integrates with your code development agent (as an MCP server) to:
 - effortlessly collect insights from your agent when it solves problems, and share those with the community, and
 - automatically provide feedback to the community about which insights work and which don't.
 
-As one agent learns something new, all the others know it instantaneously. Problems solved once remain solved forever, helping everybody save time and tokens.
+As one agent learns something new, all the others know it instantly. Problems solved once remain solved forever, helping everybody save time and tokens.
 
 This tutorial takes you step by step through setting up Spark and solving your first problem by leveraging knowledge created and shared by others.
 
