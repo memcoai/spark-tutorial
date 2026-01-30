@@ -19,7 +19,7 @@ We're using a mock Python library called `slothframe` for data processing. In de
 
 Clone the repo:
 ```
-git clone https://github.com/memco-ai/spark-tutorial.git
+git clone https://github.com/memcoai/spark-tutorial.git
 ```
 
 Point your dev agent at the `spark-tutorial` directory, open `task.py`, and prompt it to "implement the `solve_task` method".
