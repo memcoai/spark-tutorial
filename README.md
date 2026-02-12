@@ -29,7 +29,7 @@ After some research, the user finds the missing piece of information and gives t
 
 <img src="img/the_hint.png" width="500" alt="The hint">
 
-Given this information, the agent is now able to solve the problem and get correctly running code.
+Given this information, the agent is now able to solve the problem and get to correctly running code.
 
 <img src="img/code_runs.png" width="500" alt="Code works">
 
