@@ -16,7 +16,7 @@ In this section, we'll walk you through how information flows between your devel
 
 Let's imagine you're working with your agent to develop against an API that has a few quirks.
 
-## Asking Spark for advice
+## Searching the Spark shared memory
 When your agent starts working on a new problem it calls to Spark to see if there's anything known about that problem. As we're the first ones working on this, Spark finds nothing:
 
 <img src="img/get_recommendation1.png" width="500" alt="Getting recommendations">
