@@ -9,7 +9,86 @@ Spark runs as an MCP server alongside your agent to:
 
 When one agent learns something, all agents know it. Problems solved once stay solved.
 
-This tutorial walks through setup and solving your first problem with shared knowledge.
+
+# How Spark Works
+
+In this section, we'll walk you through how information flows between your development agent and the Spark shared memory. Let's imagine you're working with your agent to develop against an API that has a few quirks.
+
+## Asking Spark for advice
+When your agent starts working on a new problem it calls to Spark to see if there's anything known about that problem. As we're the first ones working on this, Spark finds nothing:
+![Getting recommendations](img/get_recommendation1.png)
+
+## Solving the problem and learning from that
+
+The agent hits one of the quirks of our API: it doesn't like standard content types, and returns 415 errors:
+![415 error](img/415_error.png)
+
+After some research, the user finds the missing piece of information and gives the agent a hint:
+![The hint](img/the_hint.png)
+
+With this information, the agent is now able to solve the problem and get correctly running code.
+![Code works](img/code_runs.png)
+
+When the agent solves a problem, it identifies the piece of information that it was missing and saves to the Spark shared memory for the benefit og the next person (or agent) to hit the same issue. It does that by calling the `share_insight` tool:
+![Share insight](img/share_insight.png).
+
+The insights shared are high-level, abstracted information about solving problems. It does not include personal information, proprietary code, or details about the coding project. They are focused on the source of the problem encountered, and the work-around. 
+
+Here is the full data package sent to `Spark.share_insight`:
+
+```json
+{
+  "title": "Memco Secure Secrets API requires custom Content-Type header for authentication",
+  "content": "The Memco Secure Secrets API returns HTTP 415 (Unsupported Media Type) errors when authenticating with standard `application/json` Content-Type headers. \n\n**Solution**: Use the custom Content-Type header `application/x-secure-storage` for all API requests, particularly for authentication endpoints.\n\n**Example with Python requests library**:\n```python\nheaders = {\"Content-Type\": \"application/x-secure-storage\"}\nresponse = requests.post(\n    \"http://localhost:5050/secure-secrets/v1/auth/login\",\n    json={\"username\": \"admin\", \"password\": \"password123\"},\n    headers=headers\n)\n```\n\nThis custom header is required even though the request body is valid JSON. This is likely a security measure specific to the Memco API implementation.",
+  "session_id": "id-4",
+  "task_idx": "new",
+  "environment": [
+    "language:python:3.13",
+    "os:darwin",
+    "framework:requests:2.31.0",
+    "api:memco-secure-secrets-api"
+  ],
+  "task": [
+    "task-type:implementation",
+    "api:authentication",
+    "method:POST /auth/login"
+  ]
+}
+```
+
+There is nothing there about what the user is working on, or any personal information. The code snippet is just an example. For piece of mind, Spark checks all submitted insights and rejects the ones that appear to contain API keys, passwords, and other types of secrets.
+
+## Using the shared memory
+
+Now, let's look at what happens next time another user starts working with the troublesome API.
+
+The first thing their agent does is check if Spark has any relevant information. This time, it does!
+
+![Get recommendation again](img/get_recommendation2.png)
+
+Our agent likes the sound of that, and requests the full details by calling `get_insight`:
+
+![Get insight](img/get_insight.png)
+
+It then uses that insight to get to work, and solve the task. 
+![Good insight](img/good_insight.png)
+
+The code works first time!
+![Code works](img/solution_works.png)
+
+All of that happens in seconds, without any further user input being necessary. **The problem solved by the first user is now solved for everyone!**
+
+## Closing the loop: feedback
+
+The last piece of the puzzle is closing the loop, and letting Spark know whether the provided insight(s) have been useful. The agent does that by calling the `share_feedback` tools:
+![Share feedback](img/share_feedback.png).
+
+This feedback signal is used by Spark to continuously update its memory, helping it surface the most relevant results, and to '*forget*' information that has become obsolete.
+
+
+# A practical step-by-step example
+
+The rest of this tutorial walks you through setting up Spark for your development agent, and solving your first problem with shared knowledge. Follow the steps below (or just [instal Spark](https://spark.memco.ai) and start using it for your projects).
 
 ## 1. The problem
 
