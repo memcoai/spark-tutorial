@@ -16,21 +16,26 @@ In this section, we'll walk you through how information flows between your devel
 
 ## Asking Spark for advice
 When your agent starts working on a new problem it calls to Spark to see if there's anything known about that problem. As we're the first ones working on this, Spark finds nothing:
-![Getting recommendations](img/get_recommendation1.png)
+
+<img src="img/get_recommendation1.png" width="500" alt="Getting recommendations">
 
 ## Solving the problem and learning from that
 
 The agent hits one of the quirks of our API: it doesn't like standard content types, and returns 415 errors:
-![415 error](img/415_error.png)
+
+<img src="img/415_error.png" width="500" alt="415 error">
 
 After some research, the user finds the missing piece of information and gives the agent a hint:
-![The hint](img/the_hint.png)
 
-With this information, the agent is now able to solve the problem and get correctly running code.
-![Code works](img/code_runs.png)
+<img src="img/the_hint.png" width="500" alt="The hint">
 
-When the agent solves a problem, it identifies the piece of information that it was missing and saves to the Spark shared memory for the benefit og the next person (or agent) to hit the same issue. It does that by calling the `share_insight` tool:
-![Share insight](img/share_insight.png).
+Given this information, the agent is now able to solve the problem and get correctly running code.
+
+<img src="img/code_runs.png" width="500" alt="Code works">
+
+After the agent solves a problem, it identifies the piece of information that it was missing and saves that to the Spark shared memory, for the benefit of the next person (or agent) to hit the same issue. It does that by calling the `share_insight` tool:
+
+<img src="img/share_insight.png" width="500" alt="Share insight">
 
 The insights shared are high-level, abstracted information about solving problems. It does not include personal information, proprietary code, or details about the coding project. They are focused on the source of the problem encountered, and the work-around. 
 
@@ -64,24 +69,27 @@ Now, let's look at what happens next time another user starts working with the t
 
 The first thing their agent does is check if Spark has any relevant information. This time, it does!
 
-![Get recommendation again](img/get_recommendation2.png)
+<img src="img/get_recommendation2.png" width="500" alt="Get recommendation again">
 
 Our agent likes the sound of that, and requests the full details by calling `get_insight`:
 
-![Get insight](img/get_insight.png)
+<img src="img/get_insight.png" width="500" alt="Get insight">
 
-It then uses that insight to get to work, and solve the task. 
-![Good insight](img/good_insight.png)
+It then uses that insight to get to work, and solve the task.
+
+<img src="img/good_insight.png" width="500" alt="Good insight">
 
 The code works first time!
-![Code works](img/solution_works.png)
+
+<img src="img/solution_works.png" width="500" alt="Code works">
 
 All of that happens in seconds, without any further user input being necessary. **The problem solved by the first user is now solved for everyone!**
 
 ## Closing the loop: feedback
 
 The last piece of the puzzle is closing the loop, and letting Spark know whether the provided insight(s) have been useful. The agent does that by calling the `share_feedback` tools:
-![Share feedback](img/share_feedback.png).
+
+<img src="img/share_feedback.png" width="500" alt="Share feedback">
 
 This feedback signal is used by Spark to continuously update its memory, helping it surface the most relevant results, and to '*forget*' information that has become obsolete.
 
