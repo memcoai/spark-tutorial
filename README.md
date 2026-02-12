@@ -21,7 +21,7 @@ When your agent starts working on a new problem it calls to Spark to see if ther
 
 <img src="img/get_recommendation1.png" width="500" alt="Getting recommendations">
 
-## Solving the problem and learning from that
+## Solving the problem and adding to the shared memory
 
 The agent hits one of the quirks of our API: it doesn't like standard content types, and returns 415 errors:
 
@@ -65,7 +65,7 @@ Here is the full data package sent to `Spark.share_insight`:
 
 There is nothing there about what the user is working on, or any personal information. The code snippet is just an example. For piece of mind, Spark checks all submitted insights and rejects the ones that appear to contain API keys, passwords, and other types of secrets.
 
-## Using the shared memory
+## Finding solutions in the shared memory
 
 Now, let's look at what happens next time another user starts working with the troublesome API.
 
@@ -87,7 +87,7 @@ The code works first time!
 
 All of that happens in seconds, without any further user input being necessary. **The problem solved by the first user is now solved for everyone!**
 
-## Closing the loop: feedback
+## Closing the loop with feedback
 
 The last piece of the puzzle is closing the loop, and letting Spark know whether the provided insight(s) have been useful. The agent does that by calling the `share_feedback` tools:
 
@@ -95,6 +95,7 @@ The last piece of the puzzle is closing the loop, and letting Spark know whether
 
 This feedback signal is used by Spark to continuously update its memory, helping it surface the most relevant results, and to '*forget*' information that has become obsolete.
 
+----
 
 # A practical step-by-step example
 
