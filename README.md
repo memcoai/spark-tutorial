@@ -63,7 +63,7 @@ Here is the full data package sent to `Spark.share_insight`:
 }
 ```
 
-There is nothing there about what the user is working on, or any personal information. The code snippet is just an example. For piece of mind, Spark checks all submitted insights and rejects the ones that appear to contain API keys, passwords, and other types of secrets.
+There is nothing there about what the user is working on, or any personal information. The code snippet is just an example. For piece of mind, Spark checks all submitted insights and rejects the ones that appear to contain API keys, real passwords, and other types of secrets.
 
 ## Finding solutions in the shared memory
 
