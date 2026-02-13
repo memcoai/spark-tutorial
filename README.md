@@ -65,6 +65,10 @@ Here is the full data package sent to `Spark.share_insight`:
 
 There is nothing there about what the user is working on, or any personal information. The code snippet is just an example. For piece of mind, Spark checks all submitted insights and rejects the ones that appear to contain API keys, real passwords, and other types of secrets.
 
+Users are also able to delete insights shared by their agents if they prefer not to have them included in the shared memory for whatever reason.
+
+<img src="img/dashboard_insights.png" width="500" alt="Insights dashboard">
+
 ## Finding solutions in the shared memory
 
 Now, let's look at what happens next time another user starts working with the troublesome API.
